@@ -1,0 +1,147 @@
+<!doctype html>
+
+<html class="no-js">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>A-Frame Tutorial Starter</title>
+ 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link href="//www.google-analytics.com" rel="dns-prefetch">
+    <link href="//ajax.googleapis.com" rel="dns-prefetch">
+
+    <!--touch icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <!--stylesheets (compiled from .scss), NOTE: this creates golden gradient-->
+    <link href="css/style.min.css" rel="stylesheet">
+
+    <!--
+      scripts that should run in the head, test for ability to run aframe.
+    -->
+    <script src="js/lib/modernizr/modernizr.js"></script>
+
+    <!-- 
+      get the latest copy of aframe from rawgit CDN, also loads a version of 
+      webvr-polyfill and code from THREE.js
+      https://github.com/aframevr/aframe/tree/master/dist
+      Since we have to have aframe running, it is OK to use a 'blocking' script 
+      in the head.
+    -->
+
+    <!-- Production version, minified 
+        <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+        or
+        <script src="https://rawgit.com/aframevr/aframe/4f06e99/dist/aframe-master.min.js"></script>
+    -->
+
+    <!-- Development Version, Uncompressed with Source Maps -->
+    <script src="https://aframe.io/releases/0.5.0/aframe.js"></script>
+
+
+  </head>
+
+  <body>
+    <!--if aframe fails, you should include some markup here dynamically. Don't add 
+      static HTML.
+    -->
+
+    <!-- 
+      your aframe components go here. 
+      a-scene is required for all A-Frame scenes
+      NOTE: Don't put any additional markup here (except for script tags) 
+      since it will affect aframe's fullscreen and VR modes)
+      NOTE: We're running the 'stats' component since we are in development.
+      NOTE: Make sure you open Web Inspector on your page!
+    -->
+
+    <!-- 1. Add stats component -->
+    <a-scene><!-- replace this line with <a-scene stats> -->
+
+        <!-- 2. shapes and transformations -->
+        <!--
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+        -->
+
+        <!-- 3. child objects inherit position and rotation -->
+        <!--
+        <a-box id="first-a-box" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" src="img/aframe.png">
+            <a-sphere radius="0.3" color="#aaffaa" position="0.21 0 0.5"></a-sphere>
+        </a-box>
+        -->
+
+        <!-- 4. add a sky (plain color) -->
+        <!--
+        <a-sky color="#ffffbb"></a-sky>
+        -->
+
+        <!-- 5. add a basic ambient light (no shadows) -->
+        <!-- 
+         <a-entity light="color: #ccccff; intensity: 1; type: ambient;" visible=""></a-entity>
+        -->
+
+        <!-- 6. add a sky (image panorama) note that you can darken or brighten the 
+        image by changing the color= attribute -->
+        <!--
+        <a-sky color="#fff" src="img/img360/basement_panorama.jpg" rotation="0 0 0"></a-sky>
+        -->
+
+        <!-- 7. add a camera and cursor to enable selecting elements on the page. The event 
+        handler below will turn the left box black you click on it
+        NOTE: using 0.3 version, since 0.5 didn't work properly-->
+        <!--
+        <a-camera position="0 0 0">
+            <a-cursor color="#4CC3D9" fuse="true" timeout="10"></a-cursor>
+        </a-camera>
+        -->
+
+        <!-- 8. replace static 360 with a 360 video. Note how assets 
+        are loaded separately with the <a-videosphere> object. -->
+        <!--
+        <a-assets>
+            <video id="video" src="video/video360/sample360_video.mp4" autoplay loop crossorigin></video>
+        </a-assets>
+        <a-videosphere src="#video" rotation="0 180 0"></a-videosphere>
+        -->
+
+    </a-scene><!--end of aframe scene-->
+
+    <!--scripts that can run after HTML loaded-->
+    <script src="js/lib/jquery/jquery.min.js"></script>
+    <script src="js/app.min.js"></script>
+
+    <!-- 9. User interaction, uncomment script to make the box 
+    sensitive to user gaze and/or mouse clicks -->
+
+    <!--
+    <script>
+        // this is a basic example of the DOM-like interaction in A-frame
+        // For more complex interaction, this would be put into a Component
+        var box = document.querySelector('#first-a-box');
+        box.getAttribute('position');
+        box.addEventListener('click', function () {
+            console.log("GOT A CLICK")
+            var boxColor = box.getAttribute('color');
+            if ( boxColor === '#4CC3D9')
+                box.setAttribute('color', '#000');
+            else 
+                box.setAttribute('color', '#4CC3D9');
+        });
+    </script>
+    -->
+
+  </body>
+
+</html>
